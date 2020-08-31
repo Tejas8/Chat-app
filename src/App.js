@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import faker from 'faker';
 import ReactDOM from 'react-dom';
+import Chat from './chat';
 
 // function buildFakeUser() {
 //   return {
@@ -24,7 +25,7 @@ import ReactDOM from 'react-dom';
 
 function Fun({user}){
   return(
-   <div className='card'>
+   <div className='card' onClick={<Chat ide={user.id} name={user.name} status={user.status} image={user.image}/>}>
        
          <div>
            <img src={user.image} alt="nam" width="50" height="60"/>
@@ -54,12 +55,13 @@ class App extends React.Component{
   
  componentDidMount(){
   let newdata=[];
-    for(let i=0;i<10;i++)
+    for(let i=0;i<6;i++)
     {
       newdata.push({
         name:faker.name.firstName(),
         image:faker.image.avatar(),
-        status:faker.address.city()
+        status:faker.address.city(),
+        id:i+1
       });
     }
     this.setState(()=>{
